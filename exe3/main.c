@@ -34,15 +34,16 @@ void process_task(void *p) {
         if (xQueueReceive(xQueueData, &data, 100)) {
             // implementar filtro aqui!
             buffer[i] = data;
+            printf("valor de buffer[i]: %d \n", buffer[i]);
             
             if (j){
                 sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
-                printf("%d \n",sum);
+                printf("if j: %d \n",sum);
                 i = 0;
             }
             else if (i == 4){
                 sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
-                printf("%d \n",sum);
+                printf("if i: %d \n",sum);
                 i = 0;
                 j = 1;
             }
