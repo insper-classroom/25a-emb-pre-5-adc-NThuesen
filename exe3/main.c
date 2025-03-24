@@ -25,13 +25,19 @@ void data_task(void *p) {
 
 void process_task(void *p) {
     int data = 0;
+    int sum = 0;
+    static int buffer[5] = {0, 0, 0, 0, 0};
+    int i = 0;
 
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
             // implementar filtro aqui!
-            for (int i = 4; i < sizeof(sine_wave_four_cycles); i++){
-                data = (sine_wave_four_cycles[i] + sine_wave_four_cycles[i-1] + sine_wave_four_cycles[i - 2] + sine_wave_four_cycles[i - 3] + sine_wave_four_cycles[i - 4])/5;
-                printf(data);
+            buffer[i] = data;
+            i++;
+            if (i == 4){
+                sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
+                printf("valor: %d",sum);
+                i = 0;
             }
 
 
