@@ -29,7 +29,7 @@ void adc_1_task(void *p) {
         vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
-void adc_2_task(void *p) {
+void adc_2_task(void *g) {
     adc_init();
     adc_gpio_init(26);
 
@@ -38,7 +38,7 @@ void adc_2_task(void *p) {
 
     uint16_t result;
     while (1) {
-        adc_select_input(1); // Select ADC input 1 (GPIO27)
+        adc_select_input(0); // Select ADC input 1 (GPIO27)
         result = adc_read();
         printf("voltage 2: %f V\n", result * conversion_factor);
 
