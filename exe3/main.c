@@ -29,7 +29,9 @@ void process_task(void *p) {
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
             // implementar filtro aqui!
-            
+            for (int i = 4; i < sizeof(sine_wave_four_cycles); i++){
+                data = (sine_wave_four_cycles[i] + sine_wave_four_cycles[i-1] + sine_wave_four_cycles[i - 2] + sine_wave_four_cycles[i - 3] + sine_wave_four_cycles[i - 4])/5;
+            }
 
 
 
