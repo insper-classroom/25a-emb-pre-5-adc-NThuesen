@@ -40,7 +40,7 @@ void process_task(void *p) {
                 printf("%d \n",sum);
                 i = 0;
             }
-            else if (i == 4){
+            else if (i == 5){
                 sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
                 printf("%d \n",sum);
                 i = 0;
