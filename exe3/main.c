@@ -37,12 +37,12 @@ void process_task(void *p) {
             i++;
             if (j){
                 sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
-                printf("valor: %d",sum);
+                printf("%d \n",sum);
                 i = 0;
             }
             else if (i == 4){
                 sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
-                printf("valor: %d",sum);
+                printf("%d \n",sum);
                 i = 0;
                 j = 1;
             }
