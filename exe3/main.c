@@ -28,20 +28,24 @@ void process_task(void *p) {
     int sum = 0;
     static int buffer[5] = {0, 0, 0, 0, 0};
     int i = 0;
+    int j = 0;
 
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
             // implementar filtro aqui!
             buffer[i] = data;
             i++;
-            if (i == 4){
+            if (j){
                 sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
                 printf("valor: %d",sum);
                 i = 0;
             }
-
-
-
+            else if (i == 4){
+                sum = (buffer[i] + buffer[i-1] + buffer[i-2] + buffer[i-3] + buffer[i-4])/5;
+                printf("valor: %d",sum);
+                i = 0;
+                j = 1;
+            }
             // deixar esse delay!
             vTaskDelay(pdMS_TO_TICKS(50));
         }
